@@ -1,9 +1,13 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.jsx',
+    entry: {
+        mian: './src/index.jsx'
+    },
     output: {
-        filename: 'main.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, '../dist')
     },
     module: {
@@ -14,7 +18,19 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            }, {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
             }
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin(['dist']),
+        new HtmlWebpackPlugin({
+            title: 'Mapbox Demo'
+        })
+    ]
 };
