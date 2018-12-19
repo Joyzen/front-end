@@ -1,4 +1,4 @@
-import mapboxgl from "mapbox-gl/dist/mapbox-gl";
+import mapboxgl from "mapbox-gl";
 
 const mapOptinos = {
     style: 'mapbox://styles/joyzen1907/cjpt4v10x0q7n2rmhk41tcbdc',
@@ -9,7 +9,7 @@ const mapOptinos = {
 //初始化mapbox
 const createMapbox = e => {
     mapboxgl.accessToken = 'pk.eyJ1Ijoiam95emVuMTkwNyIsImEiOiJjamd4MmdyN24xc240MzNwOWQ5Nzh5MGdoIn0.d_k36vaX1aBU0Q5uLekRog';
-    var map = new mapboxgl.Map(Object.assign({
+    window.map = new mapboxgl.Map(Object.assign({
         container: e,
     }, mapOptinos));
 };
