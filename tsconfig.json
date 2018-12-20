@@ -1,12 +1,26 @@
 {
     "compilerOptions": {
-        "module": "system",
+        "target": "es5",
+        "module": "commonjs",
         "noImplicitAny": true,
+        "lib": [
+            "es2015",
+            "es2015.promise",
+            "dom"
+        ],
         "removeComments": true,
         "preserveConstEnums": true,
-        "outFile": "../../built/local/tsc.js",
         "sourceMap": true,
-        "jsx": "preserve"
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        "esModuleInterop": true,
+        "jsx": "react",
+        "allowUnusedLabels": true,
+        "jsxFactory": "h",
     },
     "include": [
         "src/**/*"

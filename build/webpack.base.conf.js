@@ -7,7 +7,7 @@ const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 
 module.exports = {
     entry: {
-        mian: './src/index.tsx'
+        mian: './src/main.tsx'
     },
     output: {
         filename: '[name].js',
