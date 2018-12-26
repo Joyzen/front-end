@@ -11,12 +11,17 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, '../dist')
+        path: path.resolve(__dirname, '../dist'),
+        chunkFilename: '[chunkhash].js'
+    },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js"]
     },
     module: {
         rules: [
+
             {
-                test: [/\.js[x]$/],
+                test: [/\.js$/],
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader'
@@ -28,11 +33,15 @@ module.exports = {
                     'css-loader'
                 ]
             }, {
-                test: /\.ts[x]$/,
-                loader: 'ts-loader',
-                /* options: {
-                    appendTsxSuffixTo: [/TSX\.jsx$/]
-                } */
+                test: /\.ts(x?)$/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                    },
+                    {
+                        loader: 'ts-loader'
+                    }
+                ]
             }
         ]
     },
