@@ -7,21 +7,18 @@ const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 
 module.exports = {
     entry: {
-        mian: './src/main.tsx'
+        mian: './src/main.jsx'
     },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist'),
         chunkFilename: '[chunkhash].js'
     },
-    resolve: {
-        extensions: [".ts", ".tsx", ".js"]
-    },
     module: {
         rules: [
 
             {
-                test: [/\.js$/],
+                test: [/\.js(x?)$/],
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader'
@@ -31,16 +28,6 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader'
-                ]
-            }, {
-                test: /\.ts(x?)$/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                    },
-                    {
-                        loader: 'ts-loader'
-                    }
                 ]
             }
         ]

@@ -6,3 +6,11 @@
     top:0;
     bottom:0;
 }
+
+canvas.debug{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 20vw;
+    height:20vh;
+}
