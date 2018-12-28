@@ -38,7 +38,6 @@ class MStyle {
             style: this,
             accessToken: this._mapboxAccesstoken
         });
-
     }
 
 

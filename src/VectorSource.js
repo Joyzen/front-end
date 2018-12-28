@@ -8,7 +8,7 @@ class VectorSource {
         this.type = opt.type;
         this.ready = false;
 
-        this._tileCaches = [];
+        this._tileCaches = new Map();
 
         this._listeners = [];
 
@@ -39,12 +39,13 @@ class VectorSource {
         const url = urls[0];
         const that = this;
         return new Promise(function (resolve, reject) {
-            if (that._tileCaches[z][x][y]) resolve(that._tileCaches[z][x][y]);
+            if (that._tileCaches.get([z, x, y]))
+                resolve(that._tileCaches.get([z, x, y]));
             fetchArrayBuffer(url).then(e => {
                 const tile = new VectorTile(e);
-                that._tileCaches[z][x][y] = tile;
+                that._tileCaches.put([z, x, y], tile);
                 resolve(tile);
-            });
+            }, reject);
         });
     }
 

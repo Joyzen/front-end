@@ -2,7 +2,8 @@ import Mapboxgl from "mapbox-gl";
 import { startDebug } from "./debugMVt";
 
 const defaultOpt = {
-    style: 'mapbox://styles/joyzen1907/cjpt4v10x0q7n2rmhk41tcbdc'
+    // style: 'mapbox://styles/joyzen1907/cjpt4v10x0q7n2rmhk41tcbdc'
+    style: 'mapbox://styles/joyzen1907/cjpt4re1g5f982rnphz8x2byu'
 };//默认配置
 
 function generateMapOpt(container, opts) {

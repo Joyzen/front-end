@@ -1,4 +1,5 @@
 import { VectorSource } from "./VectorSource";
+import { doesNotReject } from "assert";
 
 class SourceManager {
     constructor(opt) {
@@ -18,12 +19,21 @@ class SourceManager {
     }
 
     loadGeometry(z, x, y) {
-        for (const id in this._resources) {
-            const resource = this._resources[id];
-            resource.loadTile(z, x, y).then(e => {
-
-            });
+        let ct = Object.keys(this._resources).length;
+        const tiles = [];
+        function done() {
+            
         }
+        return new Promise(function (resolve, reject) {
+            for (const id in this._resources) {
+                const resource = this._resources[id];
+                resource.loadTile(z, x, y).then(tile => {
+                    ct--;
+                    tiles.push(tile);
+                    done();
+                }, e => ct--);
+            }
+        });
     }
 
     createSource(source) {
